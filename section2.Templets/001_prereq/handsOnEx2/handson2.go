@@ -7,11 +7,18 @@ type Person struct {
 
 type SecretAgent struct {
 	Person
-	liceneToKill bool
+	licenceToKill bool
 }
 
-func (p Person) Speak() string {
-	return "I am " +p.fName + " " + p.lName 
+func (p Person) pSpeak() string {
+	return "I am " + p.fName + " " + p.lName
 }
 
-func
+func (sa SecretAgent) saSpeak() string {
+
+	if sa.licenceToKill { //if sa.licenceToKill == true   -> you can simplify it
+		return "My name is " + sa.fName + " " + sa.lName + " and I am a secret agent"
+	} else {
+		return "My name is " + sa.fName + " " + sa.lName + " and I am NOT a secret agent"
+	}
+}
