@@ -28,6 +28,9 @@ func (sa SecretAgent) saSpeak() string {
 	}
 }
 
+//- create an interface type that both person and secretAgent implement
+//- declare a func with a parameter of the interface’s type
+
 func Vomit(h Human) string {
 
 	switch v := h.(type) {
