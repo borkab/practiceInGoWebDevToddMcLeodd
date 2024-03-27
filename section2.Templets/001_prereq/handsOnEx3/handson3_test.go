@@ -27,7 +27,6 @@ func TestPSpeak(t *testing.T) {
 	})
 }
 
-// teszt
 func TestSaSpeak(t *testing.T) {
 
 	t.Run("has a licence to kill", func(t *testing.T) {
