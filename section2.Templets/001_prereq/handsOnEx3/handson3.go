@@ -11,39 +11,30 @@ type SecretAgent struct {
 }
 
 type Human interface {
-	pSpeak()
-	saSpeak()
+	Communicate() (string, bool)
 }
 
-func (p Person) pSpeak() string {
-	return "I am " + p.fName + " " + p.lName
+func (p Person) Communicate() (string, bool) {
+	return "I am " + p.fName + " " + p.lName, false
 }
 
-func (sa SecretAgent) saSpeak() string {
-
-	if sa.licenceToKill { //if sa.licenceToKill == true   -> you can simplify it
-		return "My name is " + sa.fName + " " + sa.lName + " and I am a secret agent"
+func (sa SecretAgent) Communicate() (string, bool) {
+	if sa.licenceToKill {
+		return "I am " + sa.fName + " " + sa.lName, true
 	} else {
-		return "My name is " + sa.fName + " " + sa.lName + " and I am NOT a secret agent"
+		return "I am " + sa.fName + " " + sa.lName, false
 	}
 }
-
-//- create an interface type that both person and secretAgent implement
-//- declare a func with a parameter of the interface’s type
 
 func Vomit(h Human) string {
 
 	switch v := h.(type) {
 	case Person:
-		return "I am " + v.fName + " just a person"
+		return "I am " + v.fName + ", just a person"
 	case SecretAgent:
 		return "I am " + v.fName + ", agent"
 	default:
 		return "I am not a human"
 	}
-	//impossible type switch case: Person
-	//h (variable of type Human) cannot have dynamic type Person (wrong type for method pSpeak)
 
-	//impossible type switch case: SecretAgent
-	//h (variable of type Human) cannot have dynamic type SecretAgent (wrong type for method pSpeak)
 }
