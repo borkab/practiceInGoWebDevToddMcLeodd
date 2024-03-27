@@ -54,3 +54,33 @@ func TestSaSpeak(t *testing.T) {
 	})
 
 }
+
+func TestVomit(t *testing.T) {
+
+	t.Run("person", func(t *testing.T) {
+		pIda := Person{fName: "Ida", lName: "Krohnenberg"}
+
+		got := Vomit(pIda) //cannot use pIda (variable of type Person) as Human value in argument to Vomit: Person does not implement Human (wrong type for method pSpeak)
+		//have pSpeak() string
+		//want pSpeak()compiler
+		want := "I am Ida, just a person"
+
+		if got != want {
+			t.Errorf("got %v want %v", got, want)
+		}
+	})
+
+	t.Run("agent", func(t *testing.T) {
+		pMor := SecretAgent{Person: Person{fName: "Mortimer", lName: "Morrison"}, licenceToKill: true}
+
+		got := Vomit(pMor) //cannot use pMor (variable of type SecretAgent) as Human value in argument to Vomit: SecretAgent does not implement Human (wrong type for method pSpeak)
+		//have pSpeak() string
+		//want pSpeak()compiler
+		want := "I am Mortimer Morrison, agent"
+
+		if got != want {
+			t.Errorf("got %v want %v", got, want)
+		}
+
+	})
+}
