@@ -26,15 +26,6 @@ func (sa SecretAgent) Communicate() (string, bool) {
 	}
 }
 
-func Vomit(h Human) string {
-
-	switch v := h.(type) {
-	case Person:
-		return "I am " + v.fName + ", just a person"
-	case SecretAgent:
-		return "I am " + v.fName + ", agent"
-	default:
-		return "I am not a human"
-	}
-
+func Vomit(h Human) (string, bool) {
+	return h.Communicate()
 }
