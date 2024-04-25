@@ -22,8 +22,8 @@ var fm = template.FuncMap{
 }
 
 func main() {
-
 	err := tpl.ExecuteTemplate(os.Stdout, "tpl.html", time.Now())
+
 	if err != nil {
 		log.Fatalln(err)
 	}
